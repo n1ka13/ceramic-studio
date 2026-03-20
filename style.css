@@ -87,3 +87,6 @@ iframe {
     border-radius: 8px;
     margin-top: 20px;
 }
+
+ul { list-style-type: circle; padding-left: 40px; }
+dl dt { font-weight: bold; color: #5d4037; }
