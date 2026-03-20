@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Veronika Dunaieva">
     <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Get in Touch</h1>
-    <p>Project Author: <strong>Veronika Dunaieva</strong></p>
-    <p>Studio Address: Kyiv, Ukraine</p>
-    <p>Email: hello@ceramic.com</p>
-    <hr>
-    <p><a href="index.html">Return to Home Page</a></p>
+    <header class="main-header">
+        <h1 class="logo">Ceramic Studio</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="process.html">Процес</a></li>
+                <li><a href="contacts.html" class="active">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Get in Touch</h1>
+        <div class="contact-info">
+            <p>Project Author: <strong>Veronika Dunaieva</strong></p>
+            <p>Studio Address: Kyiv, Ukraine</p>
+            <p>Email: <a href="mailto:hello@ceramic.com">hello@ceramic.com</a></p>
+        </div>
+        <hr>
+        <p><a href="index.html">Return to Home Page</a></p>
+    </main>
 </body>
 </html>

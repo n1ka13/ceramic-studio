@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Veronika Dunaieva">
     <title>Catalog</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Our Collection</h1>
-    <ul>
-        <li><strong>Dinner Plates</strong></li>
-        <li><strong>Gift Sets</strong></li>
-    </ul>
-    <p><a href="index.html">Back to Home</a></p>
+<body class="catalog-page">
+    <header class="main-header">
+        <h1 class="logo">Ceramic Studio</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="catalog.html" class="active">Каталог</a></li>
+                <li><a href="process.html">Процес</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Наша колекція</h1>
+        
+        <div class="lists-container">
+            <h3>Категорії (Маркований список):</h3>
+            <ul type="square">
+                <li><strong>Dinner Plates</strong></li>
+                <li><strong>Gift Sets</strong></li>
+                <li>Decorative Vases</li>
+            </ul>
+
+            <h3>Етапи замовлення (Нумерований список):</h3>
+            <ol type="I">
+                <li>Вибір виробу</li>
+                <li>Оформлення заявки</li>
+                <li>Доставка</li>
+            </ol>
+
+            <h3>Матеріали (Список визначень):</h3>
+            <dl>
+                <dt>Шамот</dt>
+                <dd>Вогнетривка глина, обпалена до втрати пластичності.</dd>
+                <dt>Ангоб</dt>
+                <dd>Покриття з рідкої глини для декорування.</dd>
+            </dl>
+        </div>
+
+        <p><a href="index.html">Повернутися на головну</a></p>
+    </main>
 </body>
 </html>
