@@ -155,9 +155,9 @@ ol li {
     letter-spacing: 2px;
 }
 
-.special-paragraph {
-    color: #fd9c3c !important;
-    font-size: 18px !important;
+#special-paragraph {
+    color: #fd9c3c;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -166,6 +166,12 @@ ol li {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin: 40px 0;
+}
+
+.special-paragraph {
+    color: #56fd3c;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .catalog-item {
@@ -215,4 +221,19 @@ ol li {
     margin-top: 60px;
     padding-top: 40px;
     border-top: 2px solid #e0e0e0;
+}
+
+.catalog-item > img {
+    border: 2px solid #eee;
+    transition: transform 0.5s;
+}
+
+.contact-info > p > a {
+    font-weight: bold;
+}
+
+.hero h2 + p {
+    margin-top: 0;
+    font-style: italic;
+    color: #795548;
 }
