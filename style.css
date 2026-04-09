@@ -18,6 +18,10 @@ main {
     align-items: center;
     padding: 10px 50px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -199,6 +203,16 @@ ol li {
     margin-bottom: 15px;
 }
 
+.featured p:last-child {
+    clear: both;
+    padding-top: 10px;
+}
+
+.frame-section {
+    clear: both;
+    margin-top: 40px;
+}
+
 .catalog-item h3 {
     color: #5d4037;
     font-size: 1.4rem;
@@ -236,4 +250,56 @@ ol li {
     margin-top: 0;
     font-style: italic;
     color: #795548;
+}
+
+.highlight-text {
+    color: #708cd7;
+    font-weight: bold;
+}
+
+.floating-vase {
+    float: left;
+    margin: 0 30px 20px 0;
+}
+
+.simple-table a:link {
+    color: #795548;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.simple-table a:visited {
+    color: #1a4a2b;
+}
+
+.simple-table a:hover {
+    color: #d35400;
+    text-decoration: none;
+}
+
+.simple-table a:active {
+    color: #000000;
+}
+
+.catalog-item:first-child {
+    border: 2px solid #f3c09e;
+    background-color: #fffcf6;
+}
+
+h2::before {
+    content: "| ";
+    color: #da712c;
+    font-weight: bold;
+}
+
+.catalog-item p::after {
+    content: "➔";
+    color: #f77a27;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover p::after {
+    transform: translateX(8px);
 }
