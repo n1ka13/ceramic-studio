@@ -203,14 +203,13 @@ ol li {
     margin-bottom: 15px;
 }
 
-.featured p:last-child {
-    clear: both;
-    padding-top: 10px;
-}
-
 .frame-section {
     clear: both;
     margin-top: 40px;
+}
+
+.frame-section h3 {
+    text-align: center;
 }
 
 .catalog-item h3 {
@@ -239,6 +238,11 @@ ol li {
 
 .catalog-item > img {
     border: 2px solid #eee;
+    transition: transform 0.5s;
+}
+
+.catalog-item img {
+    border: 2px solid #174a28;
     transition: transform 0.5s;
 }
 
