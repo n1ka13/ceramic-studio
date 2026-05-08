@@ -26,21 +26,19 @@
         <section class="hero" style="text-align: center; padding: 50px 20px;">
             <h2>Ручна робота для вашого дому</h2>
             <p>Створюємо унікальну кераміку, що надихає.</p>
-            <button class="btn-studio btn-main" onclick="startCustomOrder()">✨ Записатися на виготовлення виробу</button>
+            <button class="btn-studio btn-main" onclick="startCustomOrder()">✨ Записатися на виготовлення</button>
         </section>
 
         <section style="padding: 30px 20px; background: #fdfaf6;">
             <h3>Наші матеріали</h3>
-            <p>Ми використовуємо лише найкращу сировину. Хочете дізнатися яку глину використовуємо в студії сьогодні?</p>
-            <button class="btn-studio" onclick="compareClayDetails(
-                'Біла кам\'яна маса (Stoneware) — надзвичайно міцна, витримує високу температуру, ідеальна для посуду.',
-                'Червона глина (Terracotta) — класичний матеріал з пористою структурою, що дихає, найкраще для ваз.'
-            )">Дізнатись сьогоднішній вибір майстра</button>
+            <p>Ми використовуємо лише найкращу сировину.</p>
+            <button id="clay-btn" class="btn-studio">Дізнатись сьогоднішній вибір майстра</button>
         </section>
 
         <section class="featured" style="padding: 20px;">
             <p>Наш флагманський виріб:</p>
-            <img src="vase1.png" alt="Керамічна ваза" width="400" class="floating-vase">
+            <img src="vase1.png" alt="Керамічна ваза" width="400" class="floating-vase" id="vase-image" style="cursor: pointer;">
+            <button id="stop-vase-btn" class="btn-studio" style="display:block; clear:both; margin-top:10px; font-size:12px;">Вимкнути інтерактивність вази</button>
         </section>
 
         <section class="frame-section" style="padding: 20px;">
@@ -48,100 +46,30 @@
             <iframe src="process.html" width="100%" height="200"></iframe>
             <div style="margin-top: 10px; text-align: right;">
                 <small>Бажаєте побачити, як виглядає цех під час випалу?</small>
-                <button class="btn-studio" onclick="activateKilnMode()">🔥 Імітувати нагрів печі (30с)</button>
+                <button id="kiln-btn" class="btn-studio">🔥 Імітувати нагрів печі</button>
             </div>
         </section>
 
         <section id="studio-schedule" style="padding: 40px 20px;">
             <div style="border: 1px solid #d3c4b7; padding: 20px; border-radius: 8px;">
-                <h3 style="color: #8b5a2b;">📅 План роботи майстерні на сьогодні:</h3>
+                <h3 style="color: #8b5a2b;" data-tooltip="Тут відображаються актуальні замовлення студії">📅 План роботи майстерні на сьогодні:</h3>
+                
+                <p style="font-size: 12px; color: gray;">*Клікніть на елемент черги, щоб виділити його</p>
                 <div id="order-queue">
                     <div class="queue-item free">Вільний час майстра (12:00 - 13:00)</div>
                     <div class="queue-item free">Вільний час майстра (13:00 - 14:00)</div>
                 </div>
-                <button class="btn-studio" onclick="showDevDetails('Шевченко', 'Олена')" style="margin-top: 20px;">Хто сьогодні за гончарним колом?</button>
+
+                <div id="admin-menu" style="margin-top: 20px; padding: 10px; background: #eee; border-radius: 5px;">
+                    <p style="margin: 0 0 10px 0; font-weight: bold;">Панель адміністратора:</p>
+                    <button class="btn-studio" data-action="showArtisan">Хто сьогодні за гончарним колом?</button>
+                    <button class="btn-studio" data-action="checkDom">Технічна перевірка DOM</button>
+                </div>
                 <p id="artisan-display" style="margin-top: 10px; font-weight: bold;"></p>
-                
-                <button onclick="checkDomStats()" style="margin-top: 30px; opacity: 0.5; font-size: 10px;">Технічна перевірка DOM</button>
             </div>
         </section>
     </main>
 
     <script src="customOrder.js"></script>
-
-    <script>
-        function showDevDetails(lastName, firstName, position = "Мастер-керамміст") {
-            const info = `На зміні: ${firstName} ${lastName} (${position})`;
-            document.getElementById('artisan-display').textContent = info;
-        }
-
-        function compareClayDetails(desc1, desc2) {
-            if (desc1.length >= desc2.length) {
-                alert("Найбільш детальна інформація:\n\n" + desc1);
-            } else {
-                alert("Найбільш детальна інформація:\n\n" + desc2);
-            }
-        }
-
-        function activateKilnMode() {
-            const oldBg = document.body.style.backgroundColor;
-            document.body.style.transition = "1s";
-            document.body.style.backgroundColor = "#ff7f50";
-            
-            setTimeout(() => {
-                document.body.style.backgroundColor = oldBg || "white";
-            }, 30000);
-        }
-
-        function addOrderToQueue(text) {
-            const queue = document.getElementById('order-queue');
-            const freeSlots = document.querySelectorAll('.free');
-
-            if (freeSlots.length > 0) {
-                const orderNode = document.createElement('div');
-                orderNode.className = 'queue-item booked';
-                
-                const content = document.createTextNode("🔨 В роботі: " + text);
-                orderNode.append(content);
-
-                const urgency = document.createElement('span');
-                urgency.innerHTML = "<strong>[ACTIVE] </strong>";
-                orderNode.prepend(urgency);
-
-                freeSlots[0].replaceWith(orderNode);
-
-                setTimeout(() => {
-                    const doneMsg = document.createElement('div');
-                    doneMsg.className = "queue-item free";
-                    doneMsg.textContent = "Вільний час майстра (Звільнилося)";
-                    
-                    orderNode.after(doneMsg);
-                    orderNode.remove();
-                }, 15000);
-            } else {
-                const noSpace = document.createElement('p');
-                noSpace.style.color = "red";
-                noSpace.textContent = "⚠️ На жаль, на сьогодні запис закритий.";
-                queue.append(noSpace);
-            }
-        }
-
-        function checkDomStats() {
-            const container = document.getElementById('order-queue');
-            const first = container.firstElementChild;
-            
-            console.log("innerHTML:", first.innerHTML);
-            console.log("outerHTML:", first.outerHTML);
-            console.log("textContent:", container.textContent);
-            
-            container.childNodes.forEach(n => {
-                if(n.nodeType === 8) console.log("Коментар знайдено:", n.nodeValue);
-            });
-            
-            console.log("document.write викликано в консолі для перевірки");
-        }
-        
-        document.write("<!-- Скрипти завантажено -->");
-    </script>
 </body>
 </html>
