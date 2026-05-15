@@ -123,6 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("DOM перевірка. Кількість елементів в черзі:", container.children.length);
             alert("Перевірка DOM виконана. Результат у консолі (F12).");
         }
+
+        sayHello() {
+            alert("Привіт! Ласкаво просимо до нашої керамічної студії!");
+        }
         
         onClick(event) {
             let action = event.target.dataset.action;
